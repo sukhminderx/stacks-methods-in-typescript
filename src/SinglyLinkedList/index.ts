@@ -36,12 +36,12 @@ export class LinkedList {
     
     if (!penultimateNode) {
       lastNode = this.traverseAndReturnLastNode();
+      this.head = null;
     } else {
       lastNode = penultimateNode._next;
       penultimateNode._next = null;
     }
     let data = lastNode?._data;
-    this.head = null;
     return data as string;
   }
 

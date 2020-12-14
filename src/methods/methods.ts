@@ -11,6 +11,7 @@ export class Methods {
     "]": "[",
     ")": "(",
   };
+  operators = ['%','*','/','+','-'];
   checkBalancingInParsedString() {
     const str1 = "{asdf";
     console.log(str1 + " is " + this.isBalanced(str1));
@@ -39,5 +40,20 @@ export class Methods {
       isBalanced = false;
     }
     return isBalanced;
+  }
+
+  evaluatePostfix(str: string) {
+    const stack = new Stack();
+    for(let s of str) {
+      // if operand, push to stack
+      !this.operators.includes(s) && stack.push(s);
+      if(this.operators.includes(s)) {
+        const op1 = stack.pop();
+        const op2 = stack.pop();
+        const resultant = eval(`${op2}${s}${op1}`);
+        stack.push(resultant);
+      }
+    }
+    console.log('result is ' + stack.top());
   }
 }

@@ -6,6 +6,7 @@ import { Methods } from "./methods/methods";
 function App() {
   const methodObj = new Methods();
   methodObj.checkBalancingInParsedString();
+  methodObj.evaluatePostfix('123*+5-');
 
   return (
     <div className="App">
